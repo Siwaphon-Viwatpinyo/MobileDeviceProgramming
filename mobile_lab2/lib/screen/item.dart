@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../models/foodmenu.dart';
 
 class Item extends StatefulWidget {
   const Item({super.key});
@@ -8,32 +10,72 @@ class Item extends StatefulWidget {
 }
 
 class _ItemState extends State<Item> {
-List emp = ["พนักงาน1", "พนักงาน2", "พนักงาน3", "พนักงาน4", "พนักงาน5"];
-
-
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemCount: emp.length, itemBuilder: (context, index){
-      return Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.amberAccent,          
-        ),
-        margin: const EdgeInsets.symmetric(
-          horizontal: 2,
-          vertical: 3,
-        ),
-        padding: const EdgeInsets.all(30),
-        child: Text(
-          emp[index],
-          style: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
+    return ListView.builder(
+      itemCount: emp.length,
+      itemBuilder: (context, index) {
+        return SingleChildScrollView(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color:
+                  emp[index]
+                      .foodpic
+                      .backgroundColor, // Use the background color from Foodpic
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 3),
+            padding: const EdgeInsets.all(30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      emp[index].name,
+                      style: GoogleFonts.alumniSans(
+                        textStyle: const TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "ประเภทอาหาร : ${emp[index].type}",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    Text(
+                      "ส่วนประกอบ : ${emp[index].component}",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    Text(
+                      "ราคา : ${emp[index].price} บาท",
+                      style: GoogleFonts.anton(
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Image.asset(emp[index].foodpic.image, width: 70, height: 70),
+              ],
+            ),
           ),
-        ),
-      );
-    });
-  
+        );
+      },
+    );
   }
 }
