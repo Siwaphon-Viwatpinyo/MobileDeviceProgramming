@@ -8,28 +8,32 @@ class Item extends StatefulWidget {
 }
 
 class _ItemState extends State<Item> {
-  int qty=0;
+List emp = ["พนักงาน1", "พนักงาน2", "พนักงาน3", "พนักงาน4", "พนักงาน5"];
+
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("$qty", style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold)),
-          SizedBox(height: 20),
-          OutlinedButton(onPressed: () {
-            setState(() {
-              qty++;
-            });
-          }, child: const Text("+",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)),
-          SizedBox(height: 20),
-          OutlinedButton(onPressed: () {
-            setState(() {
-              qty=qty<=0? 0 : qty-1;
-            });
-          }, child: const Text("-",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)),
-        ],
-      ),
-    );
+    return ListView.builder(itemCount: emp.length, itemBuilder: (context, index){
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.amberAccent,          
+        ),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 2,
+          vertical: 3,
+        ),
+        padding: const EdgeInsets.all(30),
+        child: Text(
+          emp[index],
+          style: const TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+        ),
+      );
+    });
+  
   }
 }
