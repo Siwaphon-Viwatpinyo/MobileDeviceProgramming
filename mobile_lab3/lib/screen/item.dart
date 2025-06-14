@@ -28,7 +28,10 @@ class _ItemState extends State<Item> {
                             .foodpic
                             .backgroundColor, // Use the background color from Foodpic
                   ),
-                  margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 3),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 2,
+                    vertical: 3,
+                  ),
                   padding: const EdgeInsets.all(30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,7 +77,11 @@ class _ItemState extends State<Item> {
                           ),
                         ],
                       ),
-                      Image.asset(emp[index].foodpic.image, width: 70, height: 70),
+                      Image.asset(
+                        emp[index].foodpic.image,
+                        width: 70,
+                        height: 70,
+                      ),
                     ],
                   ),
                 ),
@@ -85,12 +92,16 @@ class _ItemState extends State<Item> {
         SizedBox(
           width: 100,
           height: 80,
-          child: IconButton(icon: Icon(Icons.add,size: 40,color: Colors.amber,), onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => const AddForm(),
-            ));
-          }),
-        )
+          child: IconButton(
+            icon: Icon(Icons.add, size: 40, color: Colors.amber),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddForm()),
+              );
+            },
+          ),
+        ),
       ],
     );
   }
